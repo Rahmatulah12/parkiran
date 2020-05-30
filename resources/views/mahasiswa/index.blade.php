@@ -34,24 +34,25 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($mahasiswa as $mhs)
                 <tr>
                     <th scope="row">
-                        1
+                        {{$loop->iteration}}
                     </th>
                     <td>
-                        Rahmatulah Sidik
+                        {{$mhs->nama}}
                     </td>
                     <td>
-                        201643500855
+                        {{$mhs->npm}}
                     </td>
                     <td>
-                        blcak.gun123@gmail.com
+                        {{$mhs->email}}
                     </td>
                     <td>
-                        087885664813
+                        {{$mhs->no_tlpn}}
                     </td>
                     <td>
-                        Jl. Swadaya 3, rt.012/rw.06, Kel.Rawabunga, Kec.Jatinegara, Jakarta Timur
+                        {{$mhs->alamat}}
                     </td>
                     <td>
                         <a href="" class="badge badge-success">
@@ -62,34 +63,7 @@
                         </a>
                     </td>
                 </tr>
-                <tr>
-                    <th scope="row">
-                        2
-                    </th>
-                    <td>
-                        Rahmatulah Sidik
-                    </td>
-                    <td>
-                        201643500855
-                    </td>
-                    <td>
-                        blcak.gun123@gmail.com
-                    </td>
-                    <td>
-                        087885664813
-                    </td>
-                    <td>
-                        Jl. Swadaya 3, rt.012/rw.06, Kel.Rawabunga, Kec.Jatinegara, Jakarta Timur
-                    </td>
-                    <td>
-                        <a href="" class="badge badge-success">
-                            EDIT
-                        </a>
-                        <a href="" class="badge badge-danger">
-                            DELETE
-                        </a>
-                    </td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
