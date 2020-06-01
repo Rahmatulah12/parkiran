@@ -30,12 +30,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/mahasiswa') }}">Mahasiswa</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/students') }}">Students</a>
+                </li>
                 </ul>
             </div>
        </div> 
     </nav>
 
-    <div class="container-fluid">
+    <div class="container">
         @yield('content')
     </div>
 

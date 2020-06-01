@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-    protected $primaryKey = 'id_student';
+    // $fillable berguna untuk memberitahu field input apa saja yang boleh diisi  jika menggunakan mass assignment
+    protected $fillable = ['nama', 'npm', 'email', 'no_tlpn', 'alamat'];
+    
 }

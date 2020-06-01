@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Student as student;
+use App\Mahasiswa;
 
 class MahasiswaController extends Controller
 {
@@ -17,7 +17,7 @@ class MahasiswaController extends Controller
     {
         // $mahasiswa = DB::table('students')->get();
         // dd($mahasiswa); for debug to view data and can use dump($variable);
-        $mahasiswa = student::all();
+        $mahasiswa = Mahasiswa::all();
         return view('mahasiswa/index',
             ['mahasiswa' => $mahasiswa]
         );
