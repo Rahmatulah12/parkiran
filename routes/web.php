@@ -25,3 +25,5 @@ Route::get('/students/create','StudentsController@create');
 Route::get('/students/{student}','StudentsController@show');
 // Route untuk mengelolahh hasil inputan form
 Route::post('/students','StudentsController@store');
+// Route for delete students with param id
+Route::delete('/students/{student}', 'StudentsController@destroy');

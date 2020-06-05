@@ -24,11 +24,15 @@
                 Alamat: {{$student->alamat}}
             </h6>
             <a href="{{ url('/students') }}" class="card-link">
-                &#60 Back
+                &#60&#60 Back
             </a>
-            <button type="submit" class="btn btn-danger btn-sm float-right">
-                Delete
-            </button>
+            <form action="{{$student->id}}" method="post" class="d-inline clear">
+                @method('delete')
+                @csrf
+                <button type="submit" class="btn btn-danger btn-sm float-right">
+                    Delete
+                </button>
+            </form>
             <button type="submit" class="btn btn-success btn-sm float-right mr-2">
                 Edit
             </button>

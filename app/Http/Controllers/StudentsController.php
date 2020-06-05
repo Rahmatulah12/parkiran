@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB as db;
 
 class StudentsController extends Controller
 {
@@ -60,14 +61,26 @@ class StudentsController extends Controller
         //     ]
         // );
 
+        // customize error message
+        $messages =  [
+            'nama.required' => 'Nama Mahasiswa harus diisi',
+            'npm.required'  => 'Nomor Pokok Mahasiswa harus diisi',
+            'email.required' => 'Email harus diisi',
+            'no_tlpn.required' => 'Nomor Telepon harus diisi',
+            'alamat.required' => 'Alamat harus diisi'
+        ];
+
+        
+
         // validasi
+        // unique:tbl_name
         $request->validate([
             'nama' => 'required',
-            'npm' => 'required|unique:posts|size:12',
-            'email' => 'required|unique:posts',
-            'no_tlpn' => 'required|unique:posts|size:12',
+            'npm' => 'required|unique:students|size:12',
+            'email' => 'required|unique:students',
+            'no_tlpn' => 'required|unique:students|size:12',
             'alamat' => 'required|max:255'
-        ]);
+        ], $messages);
 
         // bisa digunakan jika hanya menggunakan mass assignment
         Student::create($request->all());
@@ -118,6 +131,21 @@ class StudentsController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        /* cara yang pertama menggunakan query builder
+        db::table('students')->where('id', $student->id)->delete();
+        */
+
+        // menggunakan cara eloquent ORM
+        /*
+            cara yang pertama
+            $delete = Student::find($student->id);
+            $delete->delete();
+        */
+
+        /* cara yang kedua
+
+        */
+        Student::destroy($student->id);
+        return redirect('/students')->with('status', 'Data Mahasiswa Berhasil Dihapus');
     }
 }
