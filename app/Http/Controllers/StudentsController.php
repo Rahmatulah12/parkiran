@@ -50,18 +50,30 @@ class StudentsController extends Controller
         $student->save(); */
 
         // cara kedua dengan menggunakan mass assignment harus menambahkan property didalam model protected $fillable
-        Student::create(
-            [
-                'nama' => $request->nama,
-                'npm' => $request->npm,
-                'email' => $request->email,
-                'no_tlpn' => $request->no_tlpn,
-                'alamat' => $request->alamat
-            ]
-        );
+        // Student::create(
+        //     [
+        //         'nama' => $request->nama,
+        //         'npm' => $request->npm,
+        //         'email' => $request->email,
+        //         'no_tlpn' => $request->no_tlpn,
+        //         'alamat' => $request->alamat
+        //     ]
+        // );
+
+        // validasi
+        $request->validate([
+            'nama' => 'required',
+            'npm' => 'required|unique:posts|size:12',
+            'email' => 'required|unique:posts',
+            'no_tlpn' => 'required|unique:posts|size:12',
+            'alamat' => 'required|max:255'
+        ]);
+
+        // bisa digunakan jika hanya menggunakan mass assignment
+        Student::create($request->all());
 
         // meridirect ke halaman students
-        return redirect('/students');
+        return redirect('/students')->with('status', 'Data Mahasiswa Berhasil Ditambahkan');
     }
 
     /**

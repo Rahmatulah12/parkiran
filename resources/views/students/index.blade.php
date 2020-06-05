@@ -3,6 +3,15 @@
 @section('title', "Daftar Mahasiswa")
 
 @section('content')
+    @if (session('status'))
+    <div class="row">
+        <div class="col-lg-8 mt-2">
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        </div>
+    </div>
+    @endif
     <div class="row my-3">
         <div class="col-lg-6">
             <a href="{{url('/students/create')}}" class="btn btn-primary">
